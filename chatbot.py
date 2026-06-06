@@ -21,7 +21,7 @@ def ask_cv_question(cv_text: str, question: str) -> str:
 
     Rules:
     1. Answer ONLY from the CV.
-    2. Do not make assumptions.
+    2. Make sure to correctly interpret any OCR errors in the CV text and correct it before answering.
     3. If the answer is not found, reply exactly:
     Information not available in CV
 

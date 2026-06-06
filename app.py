@@ -28,11 +28,25 @@ if uploaded_file:
 
     st.success("CV uploaded successfully!")
 
+    if "last_file" not in st.session_state:
+            st.session_state.last_file = None
+    if "cv_text" not in st.session_state:
+        st.session_state.cv_text = None
+    
+    if "summary" not in st.session_state:
+        st.session_state.summary = None
+    
     try:
-
-
-        with st.spinner("Extracting text from CV..."):
-            cv_text = extract_document_text(str(file_path))
+        if uploaded_file.name != st.session_state.last_file:
+            st.session_state.summary = None
+            with st.spinner("Extracting text from CV..."):
+                st.session_state.cv_text = extract_document_text(
+                str(file_path)
+                )   
+            st.session_state.last_file = uploaded_file.name
+        
+        cv_text = st.session_state.cv_text
+            
     
     except Exception as e:
         st.error(f"OCR Error: {e}")
@@ -48,12 +62,26 @@ if uploaded_file:
         "OCR Output",
         cv_text,
         height=300
+
     )
+    st.sidebar.info(f"""
+    Characters extracted: {len(cv_text)}
+    Words extracted: {len(cv_text.split())}
+    """)
+    
+    
+    
+    
+    st.download_button(
+    label="Download OCR Text",
+    data=cv_text,
+    file_name="extracted_cv.txt",
+    mime="text/plain"
+    )
+
     st.subheader("CV Summary")
 
-    if "summary" not in st.session_state:
-        st.session_state.summary = None
-
+    
     if st.button("Generate Summary"):
         try:
             with st.spinner("Generating summary..."):
@@ -63,6 +91,13 @@ if uploaded_file:
             
     if st.session_state.summary:
         st.markdown(st.session_state.summary)
+
+        st.download_button(
+        label="Download CV Summary",
+        data=st.session_state.summary,
+        file_name="cv_summary.txt",
+        mime="text/plain"
+        )
 
     st.subheader("Ask Questions")
 

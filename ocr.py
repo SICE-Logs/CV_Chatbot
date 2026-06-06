@@ -1,9 +1,13 @@
 from pathlib import Path
 import easyocr
 import fitz  # PyMuPDF
+import streamlit as st
 
 # Initialize OCR Reader once
-reader = easyocr.Reader(['en'])
+@st.cache_resource
+def get_reader():
+    return easyocr.Reader(['en'])
+
 
 
 def clean_text(text):
@@ -28,6 +32,7 @@ def extract_text(image_path):
     No preprocessing because it reduced
     handwriting recognition accuracy.
     """
+    reader = get_reader()
     result = reader.readtext(str(image_path))
 
     extracted_text = []

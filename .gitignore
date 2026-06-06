@@ -5,4 +5,6 @@ __pycache__/
 .faiss/
 tests/*.jpg
 tests/extracted_cv.txt
+tests/*.pdf
+tests/*.png
 test_llmmodel.py
