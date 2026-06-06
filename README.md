@@ -118,6 +118,6 @@ python -m streamlit run app.py
 
 ## Author
 
-Logajit S (Developer)
-Manellore Kusuma Keerthi (Comprehensive App Tester)
-Developed as an AI-powered CV Analysis and Question Answering System using OCR and Large Language Models.
+- Logajit S (Developer)
+- Manellore Kusuma Keerthi (Comprehensive App Tester)
+- Developed as an AI-powered CV Analysis and Question Answering System using OCR and Large Language Models.
