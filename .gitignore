@@ -5,4 +5,4 @@ __pycache__/
 .faiss/
 tests/*.jpg
 tests/extracted_cv.txt
-test_llmmodel.py
+data/test_llmmodel.py
