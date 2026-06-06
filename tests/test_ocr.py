@@ -1,13 +1,14 @@
 import sys
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).resolve().parent.parent))
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.append(str(PROJECT_ROOT))
 
+from config import TESTS_DIR
 from ocr import extract_text
 
-text = extract_text("167261684.jpg")
+IMAGE_PATH = TESTS_DIR / "sample_cv.jpg"
 
-with open("extracted_cv.txt", "w", encoding="utf-8") as f:
-    f.write(text)
+text = extract_text(str(IMAGE_PATH))
 
 print(text)
