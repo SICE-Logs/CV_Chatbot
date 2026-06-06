@@ -85,6 +85,17 @@ GEMINI_API_KEY=your_api_key_here
 python -m streamlit run app.py
 ```
 
+
+
+## App Preview
+
+<img width="1473" height="692" alt="image" src="https://github.com/user-attachments/assets/9059a449-6b03-46e2-98e1-32899197596d" />
+
+
+<img width="1919" height="988" alt="image" src="https://github.com/user-attachments/assets/12e41252-c443-4722-a876-0d254efc6cef" />
+
+
+
 ## Usage
 
 1. Upload a CV image (`jpg`, `jpeg`, `png`) or PDF.
