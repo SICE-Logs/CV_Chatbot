@@ -17,7 +17,7 @@ Tech Stack:
 
 ## Setup
 
-git clone <repo>
+git clone https://github.com/SICE-Logs/CV_Chatbot
 
 cd cv-chatbot
 
