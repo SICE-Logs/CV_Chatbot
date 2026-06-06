@@ -3,5 +3,5 @@ __pycache__/
 .env
 *.pyc
 .faiss/
-*.jpg
-extracted_cv.txt
+tests/*.jpg
+tests/extracted_cv.txt
