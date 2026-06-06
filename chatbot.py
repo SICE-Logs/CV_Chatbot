@@ -4,18 +4,23 @@ import google.generativeai as genai
 
 load_dotenv()
 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+API_KEY = os.getenv("GEMINI_API_KEY")
 
-model = genai.GenerativeModel("gemini-1.5-flash")
+if not API_KEY:
+    raise ValueError("GEMINI_API_KEY not found in .env")
 
+genai.configure(api_key=API_KEY)
 
-def ask_cv_question(cv_text, question):
+model = genai.GenerativeModel("gemini-flash-latest")
+
+def ask_cv_question(cv_text: str, question: str) -> str:
     prompt = f"""
 You are a CV analysis assistant.
 
-Answer ONLY using the CV information provided below.
-
-If the answer is not present in the CV, reply exactly:
+Rules:
+1. Answer ONLY from the CV.
+2. Do not make assumptions.
+3. If the answer is not found, reply exactly:
 Information not available in CV
 
 CV:
